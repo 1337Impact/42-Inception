@@ -46,6 +46,28 @@ services:
       - mariadb
     restart: on-failure
 
+  static-website:
+    build:
+      context: .
+      dockerfile: requirements/bonus/static-website/Dockerfile
+    container_name: static-website
+    ports:
+      - "80:80"
+    restart: on-failure
+
+  adminer:
+    build:
+      context: .
+      dockerfile: requirements/bonus/adminer/Dockerfile
+    container_name: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: on-failure
+
 volumes:
   wp-volume:
     driver_opts:

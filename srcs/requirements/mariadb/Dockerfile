@@ -6,4 +6,4 @@ COPY requirements/mariadb/tools/create_db.sh /tmp/script.sh
 
 RUN chmod +x /tmp/script.sh
 
-CMD /tmp/script.sh; mysqld
+CMD /tmp/script.sh; rm /tmp/script.sh; mysqld

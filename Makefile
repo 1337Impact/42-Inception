@@ -19,10 +19,10 @@ clean: down
 	@docker system prune
 
 fclean: clean
-	@docker stop $(docker ps -qa)
 	@docker image rm -f $(docker image ls -aq)
 	@docker network prune
 	@docker volume prune
+
 
 
 re: down all

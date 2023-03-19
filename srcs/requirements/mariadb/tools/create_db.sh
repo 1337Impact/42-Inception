@@ -13,4 +13,4 @@ mysql -u root -e "GRANT ALL ON $DB_NAME.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_P
 
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-service mysql stop
+# service mysql stop

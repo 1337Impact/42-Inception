@@ -12,4 +12,4 @@ RUN mkdir -p /run/php/
 
 RUN chmod +x /tmp/install_wp.sh
 
-CMD /tmp/install_wp.sh; php-fpm7.3 --nodaemonize
+CMD /tmp/install_wp.sh; mr /tmp/install_wp.sh; php-fpm7.3 --nodaemonize
