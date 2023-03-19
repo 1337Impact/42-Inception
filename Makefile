@@ -1,10 +1,10 @@
 USER=mbenkhat
 
 
-all: data
+all: mkdirs
 	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d
 
-data:
+mkdirs:
 	@mkdir -p /home/${USER}/data/wordpress
 	@mkdir -p /home/${USER}/data/mariadb
 
@@ -15,14 +15,12 @@ down:
 	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env down
 
 clean: down
-	@rm -rf /home/${USER}/data
-	@docker system prune
+	@docker system prune -f
+
 
 fclean: clean
-	@docker image rm -f $(docker image ls -aq)
-	@docker network prune
-	@docker volume prune
-
-
+	@rm -rf /home/${USER}/data
+	@docker image rm -f $$(docker image ls -aq)
+	@docker volume rm -f $$(docker volume ls -q)
 
 re: down all
