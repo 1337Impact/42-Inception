@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: requirements/nginx/Dockerfile
     container_name: nginx
+    image: nginx:inception
     ports:
       - "443:443"
     env_file:
@@ -23,6 +24,7 @@ services:
       context: .
       dockerfile: requirements/mariadb/Dockerfile
     container_name: mariadb
+    image: mariadb:inception
     env_file:
       - .env
     volumes:
@@ -36,6 +38,7 @@ services:
       context: .
       dockerfile: requirements/wordpress/Dockerfile
     container_name: wordpress
+    image: wordpress:inception
     env_file:
       - .env
     volumes:
@@ -51,6 +54,7 @@ services:
       context: .
       dockerfile: requirements/bonus/static-website/Dockerfile
     container_name: static-website
+    image: static-website:inception
     ports:
       - "80:80"
     restart: on-failure
@@ -60,6 +64,7 @@ services:
       context: .
       dockerfile: requirements/bonus/adminer/Dockerfile
     container_name: adminer
+    image: adminer:inception
     ports:
       - "8080:8080"
     depends_on:

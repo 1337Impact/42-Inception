@@ -21,3 +21,9 @@ sed -i "s|database_name_here|${DB_NAME}|g" ./wp-config.php
 sed -i "s|username_here|${DB_USER}|g" ./wp-config.php
 sed -i "s|password_here|${DB_PASS}|g" ./wp-config.php
 sed -i "s|localhost|${DB_HOST}|g" ./wp-config.php
+
+#install wordpress
+
+wp core install --url=$DOMAIN_NAME --title="My Wordpress Site" --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASS --admin_email=$WP_MAIL --allow-root
+
+# wp user create $WP_USER $WP_USER_MAIL --user_pass=$WP_USER_PASS --role='author' --allow-root
