@@ -19,8 +19,13 @@ clean: down
 
 
 fclean: clean
-	@rm -rf /home/${USER}/data
-	@docker image rm -f $$(docker image ls -aq)
-	@docker volume rm -f $$(docker volume ls -q)
+	-@rm -rf /home/${USER}/data
+	-@docker image rm -f $$(docker image ls -aq)
+	-@docker volume rm -f $$(docker volume ls -q)
+
+logs:
+	@docker-compose -f ./srcs/docker-compose.yml logs
+ps:
+	@docker-compose -f ./srcs/docker-compose.yml ps
 
 re: down all
